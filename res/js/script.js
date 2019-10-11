@@ -40,15 +40,20 @@ $(function () {
     
     }
 
-    $('.controls #courses-button').click(function () {
+    $('#courses-button').click(function () {
         $("#profile-container").removeClass("active")
-        $("#courses-container").toggleClass("active")
+        $("#profile-button").removeClass("active")
+        $("#courses-container").addClass("active")
+        $(this).addClass("active")
+        
             
 
     });
 
-    $('.controls #profile-button').click(function () {
+    $('#profile-button').click(function () {
         $("#courses-container").removeClass("active")
-        $("#profile-container").toggleClass("active")
+        $("#courses-button").removeClass("active")
+        $("#profile-container").addClass("active")
+        $(this).addClass("active")
     });
 });
