@@ -56,4 +56,47 @@ $(function () {
         $("#profile-container").addClass("active")
         $(this).addClass("active")
     });
+
+    $("#add-course-button").click(function () {
+        $("#add-course").toggleClass("hidden")
+    });
+
+    $("#save-course").click(function () {
+        courses.push(new Course($("#title").val(),$("#semester").val(),$("#grade").val()));
+        $("#title").val("");
+        $("#semester").val("");
+        $("#grade").val("");
+        alert("Added succesfully!");
+        init();
+        $("#add-course").toggleClass("hidden")
+    });
+    
 });
+function getGradePoints(grade) {
+    if (grade >= 90) {
+        return 4;
+    } else if (grade >= 80) {
+        return 3;
+    } else if (grade >= 70) {
+        return 2;
+    } else if (grade >= 60) {
+        return 1;
+    } else if (grade >= 50) {
+        return 0.5;
+    } else {
+        return 0;
+    };
+};
+
+function calculateGPA() {
+    /* TODO  */
+    /* GPA =  sum of all  points / (number of courses)  */
+    /* ja siis see peaks updatema frontpageil gpa counterit! (jquery 'html' v 'text' funktsioon) */
+    points = 0
+    for (let i = 0; i < courses.length; i++) {
+        points += getGradePoints(courses[i].grade);
+    };
+    return points / courses.length;
+    /* TODO  */
+    /* uuri kas js kompileerub kui sa teed kuskil vea (kas teised funktsioonid ja asjad samas vigases failis tootavad ja kanna ette fb chatis) ((Alvar ja Sander tahtsid teada)) */
+};

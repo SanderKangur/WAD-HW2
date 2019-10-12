@@ -162,5 +162,8 @@ table td{
     min-width: 135px;
 }
 #add-course{
+    /*display: none;*/
+}
+.hidden {
     display: none;
 }
