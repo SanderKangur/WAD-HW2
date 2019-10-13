@@ -14,12 +14,21 @@ $(function () {
     ];
     init();
 
+    function calculateGPA() {
+        sum = 0
+        for (let i = 0; i < courses.length; i++) {
+            sum += getGradePoints(courses[i].grade);
+        }
+        let num = sum/courses.length;
+        return Math.round(num * 100) / 100;
+    };
+
     function init() {
 
         $("#profile-container #name").text(user.firstname + " " + user.lastname);
         $("#profile-container #birthdate").text(user.birthdate);
         $("#profile-container #faculty").text(user.faculty);
-        $("#profile-container #gpa").text(user.gpa).wrapInner("<strong />");
+        $("#profile-container #gpa").text(calculateGPA()).wrapInner("<strong />");
         $("#courses").empty();
         
         for (let i = 0; i < courses.length; i++) {
@@ -66,8 +75,8 @@ $(function () {
         $("#title").val("");
         $("#semester").val("");
         $("#grade").val("");
-        alert("Added succesfully!");
         init();
+        alert("Added succesfully!");
         $("#add-course").toggleClass("hidden")
     });
     
@@ -86,17 +95,8 @@ function getGradePoints(grade) {
     } else {
         return 0;
     };
+
+
+
 };
 
-function calculateGPA() {
-    /* TODO  */
-    /* GPA =  sum of all  points / (number of courses)  */
-    /* ja siis see peaks updatema frontpageil gpa counterit! (jquery 'html' v 'text' funktsioon) */
-    points = 0
-    for (let i = 0; i < courses.length; i++) {
-        points += getGradePoints(courses[i].grade);
-    };
-    return points / courses.length;
-    /* TODO  */
-    /* uuri kas js kompileerub kui sa teed kuskil vea (kas teised funktsioonid ja asjad samas vigases failis tootavad ja kanna ette fb chatis) ((Alvar ja Sander tahtsid teada)) */
-};
