@@ -79,6 +79,13 @@ $(function () {
         alert("Added succesfully!");
         $("#add-course").toggleClass("hidden")
     });
+
+    $("#cancel-course").click(function () {
+        $("#title").val("");
+        $("#semester").val("");
+        $("#grade").val("");
+        $("#add-course").toggleClass("hidden")
+    });
     
 });
 function getGradePoints(grade) {
